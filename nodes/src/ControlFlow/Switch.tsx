@@ -53,7 +53,18 @@ ${prevOutput}
 `;
 
 // Reusable expression input component
-const ExpressionInput = ({
+interface ExpressionInputProps {
+  label: string;
+  value: string;
+  onChange: (val: string) => void;
+  aiPrompt: string;
+  placeholder?: string;
+  description?: string;
+  nodeId: string;
+  insId: string;
+}
+
+const ExpressionInput: React.FC<ExpressionInputProps> = ({
   label,
   value,
   onChange,
@@ -94,7 +105,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
 
   const aiContextValue = React.useMemo(() => {
     return {
-      createCompletion: ports.createAiCompletion,
+      createCompletion: ports.createAiCompletion ?? (async () => ""),
       enabled: !!ports.createAiCompletion,
     };
   }, [ports.createAiCompletion]);
@@ -145,7 +156,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
       ...value,
       defaultCase: {
         enabled,
-        outputExpression: enabled ? outputExpression : undefined,
+        outputExpression: enabled ? outputExpression : "",
       },
     });
   };
@@ -229,7 +240,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
             placeholder="Describe the condition (e.g. 'value less than 2')"
             description={conditionDesc}
             nodeId={nodeId}
-            insId={insId}
+            insId={insId ?? ""}
           />
 
           <ExpressionInput
@@ -240,7 +251,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
             placeholder="Describe what to output when this condition is true"
             description={outputDesc}
             nodeId={nodeId}
-            insId={insId}
+            insId={insId ?? ""}
           />
         </div>
       );
@@ -290,7 +301,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
               placeholder="Describe what to output when no conditions match"
               description="The expression to output if no case is activated. Accepts any JS expression. You can access the inputs data using the inputs object."
               nodeId={nodeId}
-              insId={insId}
+              insId={insId ?? ""}
             />
           )}
         </div>
