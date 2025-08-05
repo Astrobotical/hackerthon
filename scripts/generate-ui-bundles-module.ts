@@ -11,9 +11,9 @@ function generateUIBundlesModule() {
 
   // Check if source directory exists
   if (!existsSync(NODE_UI_DIR)) {
-    console.error(`❌ Source directory not found: ${NODE_UI_DIR}`);
-    console.error('Make sure to build the nodes package first: pnpm build');
-    process.exit(1);
+    console.warn(`⚠️ Skipping UI bundle generation — directory not found: ${NODE_UI_DIR}`);
+    console.warn('If you need custom node UIs, make sure to build the @flyde/nodes package first.');
+    return;
   }
 
   // Get all JS files from the UI directory
