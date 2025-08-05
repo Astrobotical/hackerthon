@@ -1,0 +1,52 @@
+---
+title: "Integrating Flows"
+description: "Learn how to integrate Flyde flows into your existing codebase"
+sidebar_position: 4
+---
+
+# Integrating with Existing Code
+
+A core tenet of Flyde is that it should **integrate with existing code, and not replace it**.
+
+To achieve this, Flyde provides a runtime library that allows you to load and run .flyde files, and a webpack loader that allows you to load .flyde files directly from your code. Also, custom nodes can be implemented using TypeScript or JavaScript (more on that in the [custom nodes article](/docs/custom-nodes)).
+
+For example, given a .flyde flow that converts Celsius to Fahrenheit:
+
+![Celsius to Fahrenheit flow](/docs/cel-to-fah.png)
+
+You can load and run it from your code as following:
+
+```ts
+import { runFlow } from "@flyde/loader";
+import path from "path";
+
+// Execute the flow directly with inputs
+const result = await runFlow(path.join(__dirname, "celsius-to-fahrenheit.flyde"), {
+  celsius: 0 // "celsius" is a main input in the flow
+});
+
+console.log(result.fahrenheit); // 32
+```
+
+The `runFlow` function directly returns the result of the flow execution.
+
+For more advanced use cases, you can use the `loadFlow` function to get more control over execution:
+
+```ts
+import { loadFlow } from "@flyde/loader";
+
+const execute = await loadFlow("./celsius-to-fahrenheit.flyde");
+const { result } = execute(inputs, {
+  onOutputs: (key, value) => {
+    console.log(`output with key ${key} emitted value ${value}`);
+  },
+});
+```
+
+The example above assumes a Node.js environment. Loading Flyde in a browser environment is possible, but not yet documented. Checkout the website's source code, [here](https://github.com/flydelabs/flyde/blob/main/website/src/pages/_examples.ts) and [here](https://github.com/flydelabs/flyde/blob/main/website/docusaurus.config.js#L18) for an example of how to do it.
+
+:::note
+Learn more about the lifecycle of a flow in the [advanced concepts article](./advanced-concepts).
+:::
+
+Another key method of intgrating with existing code is by creating your own custom nodes. Learn more about that in the [custom nodes article](/docs/custom-nodes).
