@@ -7,7 +7,7 @@ import { Button, Input, Label, Separator, Checkbox, AiCompletionProvider, FormGr
 const MAX_CASES = 6;
 
 // Template functions for AI prompts
-const createConditionPrompt = (inputs, prevCondition) => `You are an expert JS condition generator. You will receive a user's request for a condition to be used in a Switch component.
+const createConditionPrompt = (inputs: string, prevCondition: string) => `You are an expert JS condition generator. You will receive a user's request for a condition to be used in a Switch component.
 Your task is to return a valid JS expression that evaluates to a boolean value based on the user's request.
 You can use the "inputs" object to access the inputs to the Switch.
 
@@ -29,7 +29,7 @@ ${prevCondition}
 - Do not use "return" statement, just the expression
 `;
 
-const createOutputPrompt = (inputs, conditionExpr, prevOutput) => `You are an expert JS expression generator. You will receive a user's request for an output expression to be used in a Switch component.
+const createOutputPrompt = (inputs: string, conditionExpr: string | null, prevOutput: string) => `You are an expert JS expression generator. You will receive a user's request for an output expression to be used in a Switch component.
 Your task is to return a valid JS expression based on the user's request.
 You can use the "inputs" object to access the inputs to the Switch.
 
@@ -100,13 +100,13 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
   }, [ports.createAiCompletion]);
 
   // Helper functions for updating config
-  const updateInput = (index, newValue) => {
+  const updateInput = (index: number, newValue: string) => {
     const newInputs = [...value.inputs];
     newInputs[index] = newValue;
     onChange({ ...value, inputs: newInputs });
   };
 
-  const removeInput = (index) => {
+  const removeInput = (index: number) => {
     const newInputs = [...value.inputs];
     newInputs.splice(index, 1);
     onChange({ ...value, inputs: newInputs });
@@ -118,13 +118,13 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
     onChange({ ...value, inputs: newInputs });
   };
 
-  const updateCase = (index, field, newValue) => {
+  const updateCase = (index: number, field: string, newValue: string) => {
     const newCases = [...value.cases];
     newCases[index] = { ...newCases[index], [field]: newValue };
     onChange({ ...value, cases: newCases });
   };
 
-  const removeCase = (index) => {
+  const removeCase = (index: number) => {
     const newCases = [...value.cases];
     newCases.splice(index, 1);
     onChange({ ...value, cases: newCases });
@@ -140,7 +140,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
     onChange({ ...value, cases: newCases });
   };
 
-  const updateDefaultCase = (enabled, outputExpression = "") => {
+  const updateDefaultCase = (enabled: boolean, outputExpression = "") => {
     onChange({
       ...value,
       defaultCase: {
@@ -224,7 +224,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
           <ExpressionInput
             label={`Case no. ${i + 1} condition expression:`}
             value={case_.conditionExpression}
-            onChange={(val) => updateCase(i, "conditionExpression", val)}
+            onChange={(val: any) => updateCase(i, "conditionExpression", val)}
             aiPrompt={createConditionPrompt(inputsList, case_.conditionExpression)}
             placeholder="Describe the condition (e.g. 'value less than 2')"
             description={conditionDesc}
@@ -235,7 +235,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
           <ExpressionInput
             label={`Case no. ${i + 1} output expression:`}
             value={case_.outputExpression}
-            onChange={(val) => updateCase(i, "outputExpression", val)}
+            onChange={(val: any) => updateCase(i, "outputExpression", val)}
             aiPrompt={createOutputPrompt(inputsList, case_.conditionExpression, case_.outputExpression)}
             placeholder="Describe what to output when this condition is true"
             description={outputDesc}
@@ -281,7 +281,7 @@ const SwitchEditor: ConfigurableEditorComp<SwitchConfig> = function SwitchEditor
             <ExpressionInput
               label="Default case output expression:"
               value={value.defaultCase.outputExpression}
-              onChange={(val) => updateDefaultCase(true, val)}
+              onChange={(val: string | undefined) => updateDefaultCase(true, val)}
               aiPrompt={createOutputPrompt(
                 value.inputs.join(", "),
                 null,

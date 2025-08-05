@@ -44,15 +44,15 @@ export const Switch: CodeNode<SwitchConfig> = {
     },
   },
   inputs: (config) =>
-    config.inputs.reduce((acc, name, i) => {
+    config.inputs.reduce((acc: { [key: string]: { description: string } }, name, i) => {
       acc[name] = { description: `Switch input no. ${i + 1}` };
       return acc;
     }, {}),
   outputs: (config) => {
-    const outputs = config.cases.reduce((acc, { name }, i) => {
+    const outputs = config.cases.reduce((acc: { [key: string]: { description: string } }, { name }, i) => {
       acc[name] = { description: `Switch output no. ${i + 1}` };
       return acc;
-    }, {});
+    }, {} as { [key: string]: { description: string } });
 
     if (config.defaultCase.enabled) {
       outputs["default"] = { description: "Switch default case output" };
