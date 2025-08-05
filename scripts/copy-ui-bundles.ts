@@ -16,9 +16,9 @@ function copyUIBundles() {
 
   // Check if source directory exists
   if (!existsSync(NODE_UI_DIR)) {
-    console.error(`❌ Source directory not found: ${NODE_UI_DIR}`);
-    console.error('Make sure to build the nodes package first: pnpm build');
-    process.exit(1);
+    console.warn(`⚠️  Source directory not found: ${NODE_UI_DIR}`);
+    console.warn('Skipping UI bundle copy step because the directory is missing.');
+    return;
   }
 
   // Copy all .js files from nodes/dist/ui to website/public/ui
