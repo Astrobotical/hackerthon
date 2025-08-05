@@ -1,0 +1,9 @@
+export const functionalChange = (message) => ({
+    type: "functional",
+    message,
+});
+export const metaChange = (message = "n/a") => ({
+    type: "meta",
+    message,
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmx5ZGUtZmxvdy1jaGFuZ2UtdHlwZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9mbG93LWVkaXRvci9mbHlkZS1mbG93LWNoYW5nZS10eXBlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUtBLE1BQU0sQ0FBQyxNQUFNLGdCQUFnQixHQUFHLENBQUMsT0FBZSxFQUF1QixFQUFFLENBQUMsQ0FBQztJQUN6RSxJQUFJLEVBQUUsWUFBWTtJQUNsQixPQUFPO0NBQ1IsQ0FBQyxDQUFDO0FBRUgsTUFBTSxDQUFDLE1BQU0sVUFBVSxHQUFHLENBQUMsT0FBTyxHQUFHLEtBQUssRUFBdUIsRUFBRSxDQUFDLENBQUM7SUFDbkUsSUFBSSxFQUFFLE1BQU07SUFDWixPQUFPO0NBQ1IsQ0FBQyxDQUFDIn0=

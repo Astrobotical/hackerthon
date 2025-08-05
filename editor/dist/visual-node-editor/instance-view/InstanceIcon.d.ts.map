@@ -1,0 +1,1 @@
+{"version":3,"file":"InstanceIcon.d.ts","sourceRoot":"","sources":["../../../src/visual-node-editor/instance-view/InstanceIcon.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,OAAO,EAAE,YAAY,EAAE,MAAM,aAAa,CAAC;AAI3C,UAAU,iBAAiB;IACzB,IAAI,CAAC,EAAE,YAAY,CAAC;IACpB,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,YAAY,EAAE,KAAK,CAAC,EAAE,CAAC,iBAAiB,CASpD,CAAC"}

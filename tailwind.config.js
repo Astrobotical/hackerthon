@@ -1,5 +1,5 @@
 // Import the editor's Tailwind config to extend from it
-const editorConfig = require('../editor/tailwind.config.js');
+const editorConfig = require('./editor/tailwind.config.js');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

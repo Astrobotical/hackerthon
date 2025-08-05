@@ -1,0 +1,190 @@
+$blink-duration: 20s; // change also BLINK_TIMEOUT in play-event.ts
+
+// Dark mode colors (base colors)
+$runtime-processing-color-dark: #2887f4;
+$runtime-active-color-dark: #39bf15;
+$runtime-error-color-dark: #e10000;
+$runtime-waiting-color-dark: #e1ac00;
+
+// Light mode colors (derived with darken)
+$runtime-processing-color-light: darken($runtime-processing-color-dark, 5%);
+$runtime-active-color-light: darken($runtime-active-color-dark, 5%);
+$runtime-error-color-light: darken($runtime-error-color-dark, 5%);
+$runtime-waiting-color-light: darken($runtime-waiting-color-dark, 5%);
+
+@mixin event-vars($bg-color-light, $bg-color-dark) {
+  &:not(.dark) {
+    --event-bg-color: #{$bg-color-light};
+  }
+
+  &.dark {
+    --event-bg-color: #{$bg-color-dark};
+  }
+}
+
+.base-node-view-wrapper[data-runtime="processing"] {
+  @include event-vars($runtime-processing-color-light,
+    $runtime-processing-color-dark );
+
+  .node-header {
+    animation: pulse 1.5s infinite;
+  }
+
+  .node-body .icon-container {
+    animation: pulse-text 1.5s infinite;
+  }
+}
+
+.base-node-view-wrapper[data-runtime="done"] {
+  @include event-vars($runtime-active-color-light, $runtime-active-color-dark);
+
+  .node-header {
+    animation: blink $blink-duration;
+  }
+
+  .node-body .icon-container {
+    animation: blink-text $blink-duration;
+  }
+}
+
+.base-node-view-wrapper[data-runtime="waiting"] {
+  @include event-vars($runtime-waiting-color-light,
+    $runtime-waiting-color-dark );
+
+  .node-header {
+    animation: pulse $blink-duration;
+  }
+
+  .node-body .icon-container {
+    animation: pulse-text $blink-duration;
+  }
+}
+
+.ins-view:not(.error-caught) {
+  .base-node-view-wrapper[data-runtime="error"] {
+    @include event-vars($runtime-error-color-light, $runtime-error-color-dark);
+
+    .node-header {
+      animation: blink $blink-duration;
+    }
+
+    .node-body .icon-container {
+      animation: blink-text $blink-duration;
+    }
+  }
+}
+
+.ins-view.error-caught {
+  .base-node-view-wrapper[data-runtime="error"] {
+    @include event-vars($runtime-active-color-light,
+      $runtime-active-color-dark );
+
+    .node-header {
+      animation: blink-error $blink-duration * 2;
+    }
+
+    .node-body .icon-container {
+      animation: blink-text-error $blink-duration * 2;
+    }
+  }
+}
+
+.pin:not(.error-pin) .pin-inner[data-runtime="active"],
+.pin.error-pin.connected .pin-inner[data-runtime="active"],
+.node-io-view-inner[data-runtime="active"] {
+  &:not([data-runtime-queue]) {
+    @include event-vars($runtime-active-color-light,
+      $runtime-active-color-dark );
+    animation: blink-text $blink-duration;
+  }
+}
+
+.pin.error-pin:not(.connected) .pin-inner[data-runtime="active"] {
+  @include event-vars($runtime-error-color-light, $runtime-error-color-dark);
+  animation: blink-text $blink-duration * 2;
+}
+
+.node-io-view-inner[data-runtime-queue],
+.pin-inner[data-runtime-queue] {
+  @include event-vars($runtime-waiting-color-light,
+    $runtime-waiting-color-dark );
+  animation: pulse-text 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background: var(--event-bg-color);
+    // transform: scale(0.98);
+    filter: brightness(0.95);
+  }
+
+  50% {
+    background: var(--event-bg-color);
+    // transform: scale(1.01);
+    filter: brightness(1.1);
+  }
+
+  100% {
+    background: var(--event-bg-color);
+    // transform: scale(0.98);
+    filter: brightness(0.95);
+  }
+}
+
+@keyframes pulse-text {
+  0% {
+    color: var(--event-bg-color);
+    transform: scale(0.98);
+    filter: brightness(1);
+  }
+
+  50% {
+    color: var(--event-bg-color);
+    transform: scale(1.01);
+    filter: brightness(1.1);
+  }
+
+  100% {
+    color: var(--event-bg-color);
+    transform: scale(0.98);
+    filter: brightness(1);
+  }
+}
+
+@keyframes blink {
+  0% {
+    // background-color: $base-color;
+  }
+
+  3% {
+    background-color: var(--event-bg-color);
+  }
+
+  30% {
+    background-color: var(--event-bg-color);
+    filter: brightness(1.2);
+  }
+
+  100% {
+    // background-color: $base-color;
+  }
+}
+
+@keyframes blink-text {
+  0% {
+    // background-color: $base-color;
+  }
+
+  3% {
+    color: var(--event-bg-color);
+  }
+
+  30% {
+    color: var(--event-bg-color);
+    filter: brightness(1.2);
+  }
+
+  100% {
+    // background-color: $base-color;
+  }
+}

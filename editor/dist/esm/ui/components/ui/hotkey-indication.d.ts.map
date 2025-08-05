@@ -1,0 +1,1 @@
+{"version":3,"file":"hotkey-indication.d.ts","sourceRoot":"","sources":["../../../../../src/ui/components/ui/hotkey-indication.tsx"],"names":[],"mappings":"AA2BA,MAAM,WAAW,qBAAqB;IACpC,SAAS,CAAC,EAAE,MAAM,CAAC;IACnB,MAAM,EAAE,MAAM,CAAC;IACf,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,IAAI,CAAC,EAAE,IAAI,GAAG,IAAI,GAAG,IAAI,CAAC;CAC3B;AAED,eAAO,MAAM,gBAAgB,GAAI,qCAK9B,qBAAqB,4CAkCvB,CAAC"}

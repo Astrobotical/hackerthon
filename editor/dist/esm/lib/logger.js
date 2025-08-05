@@ -1,0 +1,3 @@
+import { debugLogger } from "@flyde/core";
+export const logger = debugLogger("editor");
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9nZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2xpYi9sb2dnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFlLFdBQVcsRUFBRSxNQUFNLGFBQWEsQ0FBQztBQUV2RCxNQUFNLENBQUMsTUFBTSxNQUFNLEdBQWdCLFdBQVcsQ0FBQyxRQUFRLENBQUMsQ0FBQyJ9

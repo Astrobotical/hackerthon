@@ -1,0 +1,1 @@
+{"version":3,"file":"flyde-flow-change-type.d.ts","sourceRoot":"","sources":["../../src/flow-editor/flyde-flow-change-type.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,mBAAmB,GAAG;IAChC,IAAI,EAAE,YAAY,GAAG,MAAM,CAAC;IAC5B,OAAO,EAAE,MAAM,CAAC;CACjB,CAAC;AAEF,eAAO,MAAM,gBAAgB,GAAI,SAAS,MAAM,KAAG,mBAGjD,CAAC;AAEH,eAAO,MAAM,UAAU,GAAI,gBAAe,KAAG,mBAG3C,CAAC"}

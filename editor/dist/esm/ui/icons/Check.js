@@ -1,0 +1,7 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import { defaultProps } from "./types";
+export function Check(props) {
+    const { size, strokeWidth, ...rest } = { ...defaultProps, ...props };
+    return (_jsx("svg", { width: size, height: size, fill: "none", stroke: "currentColor", strokeWidth: strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24", ...rest, children: _jsx("path", { d: "M20 6 9 17l-5-5" }) }));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hlY2suanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9zcmMvdWkvaWNvbnMvQ2hlY2sudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQSxPQUFPLEVBQWEsWUFBWSxFQUFFLE1BQU0sU0FBUyxDQUFDO0FBRWxELE1BQU0sVUFBVSxLQUFLLENBQUMsS0FBZ0I7SUFDcEMsTUFBTSxFQUFFLElBQUksRUFBRSxXQUFXLEVBQUUsR0FBRyxJQUFJLEVBQUUsR0FBRyxFQUFFLEdBQUcsWUFBWSxFQUFFLEdBQUcsS0FBSyxFQUFFLENBQUM7SUFDckUsT0FBTyxDQUNMLGNBQ0UsS0FBSyxFQUFFLElBQUksRUFDWCxNQUFNLEVBQUUsSUFBSSxFQUNaLElBQUksRUFBQyxNQUFNLEVBQ1gsTUFBTSxFQUFDLGNBQWMsRUFDckIsV0FBVyxFQUFFLFdBQVcsRUFDeEIsYUFBYSxFQUFDLE9BQU8sRUFDckIsY0FBYyxFQUFDLE9BQU8sRUFDdEIsT0FBTyxFQUFDLFdBQVcsS0FDZixJQUFJLFlBRVIsZUFBTSxDQUFDLEVBQUMsaUJBQWlCLEdBQUcsR0FDeEIsQ0FDUCxDQUFDO0FBQ0osQ0FBQyJ9

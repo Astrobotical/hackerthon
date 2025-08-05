@@ -1,0 +1,88 @@
+{
+  "name": "@flyde/nodes",
+  "version": "1.0.46",
+  "description": "Flyde's Nodes Library",
+  "flyde": {
+    "exposes": [
+      "dist/**/*.flyde.js"
+    ],
+    "typings": "flyde-typings.d.ts"
+  },
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/*": {
+      "import": "./dist/esm/*.js",
+      "require": "./dist/*.js",
+      "types": "./dist/*.d.ts"
+    },
+    "./dist/bundled-config": {
+      "require": "./dist/bundled-config/index.js"
+    },
+    "./dist/bundled-config/*": {
+      "require": "./dist/bundled-config/*.js",
+      "types": "./dist/bundled-config/*.d.ts"
+    }
+  },
+  "author": "Flyde",
+  "license": "MIT",
+  "dependencies": {
+    "@flyde/core": "workspace:*",
+    "@flyde/editor": "workspace:*",
+    "@types/pg": "^8.10.2",
+    "@types/react": "~18.2.0",
+    "axios": "^1.10.0",
+    "pg": "^8.11.3",
+    "pubsub-js": "^1.9.4",
+    "react": "~18.2.0"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.50.0",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "chai": "^4.3.7",
+    "concurrently": "^9.1.2",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-local-rules": "^2.0.1",
+    "knip": "^5.27.0",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.5.4",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "gitHead": "5f06bd4a0f3da610e64d74c19cc84babc4557f56",
+  "scripts": {
+    "test": "mocha src/**/*.spec.ts --require ts-node/register",
+    "echo": "echo 'no watch'",
+    "watch": "concurrently --kill-others \"pnpm run watch:ts\" \"pnpm run watch:docs-data\" \"pnpm run nodes-ui:watch\"",
+    "watch:ts": "tsc -p . -w --incremental",
+    "watch:docs-data": "nodemon --watch scripts --watch src -e ts --exec \"ts-node scripts/docs-data.ts\"",
+    "dev": "pnpm run watch",
+    "nodes-ui:bundle": "webpack --config webpack.config.js",
+    "nodes-ui:watch": "webpack --config webpack.config.js --watch",
+    "build": "pnpm run clean && tsc -p tsconfig.build.json && pnpm run build:esm && pnpm run nodes-ui:bundle && pnpm run build:docs-data && pnpm run build:bundled-config",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:docs-data": "ts-node scripts/docs-data.ts",
+    "build:node-sources": "ts-node scripts/build-node-sources.ts",
+    "build:bundled-config": "ts-node scripts/create-bundled-config.ts",
+    "prod": "node dist/index.js",
+    "clean": "rm -rf dist",
+    "__publish": "npm version patch && npm publish",
+    "lint": "eslint . --ext .ts && ts-node scripts/check-unique-node-ids.ts"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.50.0"
+  }
+}

@@ -1,0 +1,7 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import { defaultProps } from "./types";
+export function Play(props) {
+    const { size, strokeWidth, ...rest } = { ...defaultProps, ...props };
+    return (_jsx("svg", { width: size, height: size, fill: "none", stroke: "currentColor", strokeWidth: strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24", ...rest, children: _jsx("polygon", { points: "5 3 19 12 5 21 5 3" }) }));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGxheS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy91aS9pY29ucy9QbGF5LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0EsT0FBTyxFQUFhLFlBQVksRUFBRSxNQUFNLFNBQVMsQ0FBQztBQUVsRCxNQUFNLFVBQVUsSUFBSSxDQUFDLEtBQWdCO0lBQ25DLE1BQU0sRUFBRSxJQUFJLEVBQUUsV0FBVyxFQUFFLEdBQUcsSUFBSSxFQUFFLEdBQUcsRUFBRSxHQUFHLFlBQVksRUFBRSxHQUFHLEtBQUssRUFBRSxDQUFDO0lBQ3JFLE9BQU8sQ0FDTCxjQUNFLEtBQUssRUFBRSxJQUFJLEVBQ1gsTUFBTSxFQUFFLElBQUksRUFDWixJQUFJLEVBQUMsTUFBTSxFQUNYLE1BQU0sRUFBQyxjQUFjLEVBQ3JCLFdBQVcsRUFBRSxXQUFXLEVBQ3hCLGFBQWEsRUFBQyxPQUFPLEVBQ3JCLGNBQWMsRUFBQyxPQUFPLEVBQ3RCLE9BQU8sRUFBQyxXQUFXLEtBQ2YsSUFBSSxZQUVSLGtCQUFTLE1BQU0sRUFBQyxvQkFBb0IsR0FBRyxHQUNuQyxDQUNQLENBQUM7QUFDSixDQUFDIn0=

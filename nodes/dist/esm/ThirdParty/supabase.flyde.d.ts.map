@@ -1,0 +1,1 @@
+{"version":3,"file":"supabase.flyde.d.ts","sourceRoot":"","sources":["../../../src/ThirdParty/supabase.flyde.ts"],"names":[],"mappings":"AAAA,OAAO,EAEL,QAAQ,EACT,MAAM,aAAa,CAAC;AAIrB,MAAM,WAAW,qBAAqB;IACpC,KAAK,EAAE;QACL,OAAO,EAAE,MAAM,CAAC;QAChB,IAAI,CAAC,EAAE,MAAM,CAAC;QACd,MAAM,CAAC,EAAE,MAAM,CAAC;KACjB,CAAC;CACH;AAED,eAAO,MAAM,QAAQ,EAAE,QAyStB,CAAC"}

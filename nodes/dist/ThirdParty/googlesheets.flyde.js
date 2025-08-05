@@ -1,0 +1,255 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GoogleSheets = void 0;
+const core_1 = require("@flyde/core");
+const axios_1 = __importDefault(require("axios"));
+exports.GoogleSheets = {
+    id: "GoogleSheets",
+    menuDisplayName: "Google Sheets",
+    namespace: "spreadsheets",
+    icon: `table-cells`,
+    displayName: "Google Sheets {{action}}",
+    description: "Interact with Google Sheets API",
+    inputs: {
+        authentication: {
+            group: (0, core_1.createInputGroup)("Authentication", ["authMethod", "accessToken", "serviceAccountKey"], {
+                collapsible: true,
+                defaultCollapsed: true,
+            }),
+        },
+        authMethod: {
+            defaultValue: "oauth",
+            label: "Authentication Method",
+            description: "Method to authenticate with Google Sheets API",
+            editorType: "select",
+            editorTypeData: {
+                options: ["oauth", "serviceAccount"],
+            },
+        },
+        accessToken: {
+            editorType: "secret",
+            editorTypeData: {
+                defaultName: "GOOGLE_ACCESS_TOKEN",
+            },
+            description: "OAuth Access Token for Google API",
+            condition: "authMethod === 'oauth'",
+        },
+        serviceAccountKey: {
+            editorType: "secret",
+            editorTypeData: {
+                defaultName: "GOOGLE_SERVICE_ACCOUNT_KEY",
+            },
+            description: "Service Account JSON key file contents",
+            condition: "authMethod === 'serviceAccount'",
+        },
+        action: {
+            defaultValue: "getValues",
+            label: "Action",
+            typeConfigurable: true,
+            description: "Action to perform on the spreadsheet",
+            editorType: "select",
+            editorTypeData: {
+                options: [
+                    { label: "Get Values", value: "getValues" },
+                    { label: "Update Values", value: "updateValues" },
+                    { label: "Append Values", value: "appendValues" },
+                    { label: "Clear Values", value: "clearValues" },
+                    { label: "Create Sheet", value: "createSheet" },
+                ],
+            },
+        },
+        spreadsheetId: {
+            defaultValue: "",
+            editorType: "string",
+            description: "ID of the Google Sheet document (found in the URL)",
+        },
+        range: {
+            defaultValue: "Sheet1!A1:D5",
+            editorType: "string",
+            description: "Cell range (e.g., Sheet1!A1:D5)",
+            condition: "action !== 'createSheet'",
+        },
+        values: {
+            defaultValue: [["Data", "In", "A", "Table"]],
+            editorType: "json",
+            description: "Data to write as a 2D array",
+            condition: "action === 'updateValues' || action === 'appendValues'",
+        },
+        valueInputOption: {
+            defaultValue: "RAW",
+            editorType: "select",
+            editorTypeData: {
+                options: ["RAW", "USER_ENTERED"],
+            },
+            description: "How input data should be interpreted",
+            condition: "action === 'updateValues' || action === 'appendValues'",
+        },
+        title: {
+            defaultValue: "New Spreadsheet",
+            editorType: "string",
+            description: "Title for the new spreadsheet",
+            condition: "action === 'createSheet'",
+        },
+        sheetProperties: {
+            defaultValue: {
+                title: "Sheet1",
+                gridProperties: { rowCount: 100, columnCount: 20 },
+            },
+            editorType: "json",
+            description: "Properties for the new sheet",
+            condition: "action === 'createSheet'",
+        },
+        additionalOptions: {
+            group: (0, core_1.createInputGroup)("Additional Options", ["valueInputOption"], {
+                collapsible: true,
+                defaultCollapsed: true,
+            }),
+            condition: "action === 'updateValues' || action === 'appendValues'",
+        },
+    },
+    outputs: {
+        result: {
+            description: "Operation result data",
+        },
+    },
+    run: async (inputs, outputs, adv) => {
+        var _a;
+        const { authMethod, accessToken, serviceAccountKey, action, spreadsheetId, range, values, valueInputOption, title, sheetProperties, } = inputs;
+        if (authMethod === "oauth" && !accessToken) {
+            throw new Error("OAuth access token is required when using OAuth authentication");
+        }
+        if (authMethod === "serviceAccount" && !serviceAccountKey) {
+            throw new Error("Service account key is required when using service account authentication");
+        }
+        if (!spreadsheetId && action !== "createSheet") {
+            throw new Error("spreadsheetId is required");
+        }
+        const headers = {
+            "Content-Type": "application/json",
+        };
+        // Set auth headers based on selected method
+        if (authMethod === "oauth") {
+            headers.Authorization = `Bearer ${accessToken}`;
+        }
+        else if (authMethod === "serviceAccount") {
+            try {
+                // Parse the service account key
+                const serviceAccount = JSON.parse(serviceAccountKey);
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore-error - type should be a peer-dependency
+                const { JWT } = await Promise.resolve().then(() => __importStar(require("google-auth-library")));
+                // Create a JWT client using the service account credentials
+                const jwtClient = new JWT({
+                    email: serviceAccount.client_email,
+                    key: serviceAccount.private_key,
+                    scopes: [
+                        "https://www.googleapis.com/auth/spreadsheets",
+                        "https://www.googleapis.com/auth/drive",
+                    ],
+                });
+                // Authorize the client and get an access token
+                const token = await jwtClient.getAccessToken();
+                if (!token.token) {
+                    throw new Error("Failed to obtain access token from service account");
+                }
+                // Set the authorization header with the token
+                headers.Authorization = `Bearer ${token.token}`;
+            }
+            catch (error) {
+                if (error instanceof SyntaxError) {
+                    throw new Error("Invalid service account key JSON format");
+                }
+                adv.onError(`Service account authentication error: ${error.message}`);
+                return;
+            }
+        }
+        let url = "";
+        let method = "GET";
+        let data = undefined;
+        // Build request based on action
+        switch (action) {
+            case "getValues":
+                url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`;
+                break;
+            case "updateValues":
+                url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`;
+                url += `?valueInputOption=${valueInputOption}`;
+                method = "PUT";
+                data = { values };
+                break;
+            case "appendValues":
+                url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append`;
+                url += `?valueInputOption=${valueInputOption}`;
+                method = "POST";
+                data = { values };
+                break;
+            case "clearValues":
+                url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:clear`;
+                method = "POST";
+                break;
+            case "createSheet":
+                url = `https://sheets.googleapis.com/v4/spreadsheets`;
+                method = "POST";
+                data = {
+                    properties: { title },
+                    sheets: [{ properties: sheetProperties }],
+                };
+                break;
+            default:
+                throw new Error(`Unsupported action: ${action}`);
+        }
+        try {
+            const res = await (0, axios_1.default)({
+                method,
+                url,
+                headers,
+                data,
+            });
+            outputs.result.next(res.data);
+        }
+        catch (error) {
+            if (axios_1.default.isAxiosError(error) && error.response) {
+                const errorData = error.response.data;
+                adv.onError(`Google Sheets API Error ${error.response.status}: ${((_a = errorData.error) === null || _a === void 0 ? void 0 : _a.message) || error.response.statusText}`);
+                return;
+            }
+            adv.onError(`Error: ${error.message}`);
+        }
+    },
+};

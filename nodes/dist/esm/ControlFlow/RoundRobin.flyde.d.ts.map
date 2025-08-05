@@ -1,0 +1,1 @@
+{"version":3,"file":"RoundRobin.flyde.d.ts","sourceRoot":"","sources":["../../../src/ControlFlow/RoundRobin.flyde.ts"],"names":[],"mappings":"AAAA,OAAO,EAEL,iBAAiB,EAElB,MAAM,aAAa,CAAC;AACrB,OAAO,EAAE,QAAQ,EAAE,MAAM,aAAa,CAAC;AAIvC,MAAM,WAAW,gBAAgB;IAC/B,KAAK,EAAE,iBAAiB,CAAC;CAC1B;AAED,eAAO,MAAM,UAAU,EAAE,QAAQ,CAAC,gBAAgB,CA2DjD,CAAC"}

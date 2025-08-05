@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { defaultProps } from "./types";
+export function Lightbulb(props) {
+    const { size, strokeWidth, ...rest } = { ...defaultProps, ...props };
+    return (_jsxs("svg", { width: size, height: size, fill: "none", stroke: "currentColor", strokeWidth: strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24", ...rest, children: [_jsx("path", { d: "M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" }), _jsx("path", { d: "M9 18h6" }), _jsx("path", { d: "M10 22h4" })] }));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGlnaHRidWxiLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vc3JjL3VpL2ljb25zL0xpZ2h0YnVsYi50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLE9BQU8sRUFBYSxZQUFZLEVBQUUsTUFBTSxTQUFTLENBQUM7QUFFbEQsTUFBTSxVQUFVLFNBQVMsQ0FBQyxLQUFnQjtJQUN4QyxNQUFNLEVBQUUsSUFBSSxFQUFFLFdBQVcsRUFBRSxHQUFHLElBQUksRUFBRSxHQUFHLEVBQUUsR0FBRyxZQUFZLEVBQUUsR0FBRyxLQUFLLEVBQUUsQ0FBQztJQUNyRSxPQUFPLENBQ0wsZUFDRSxLQUFLLEVBQUUsSUFBSSxFQUNYLE1BQU0sRUFBRSxJQUFJLEVBQ1osSUFBSSxFQUFDLE1BQU0sRUFDWCxNQUFNLEVBQUMsY0FBYyxFQUNyQixXQUFXLEVBQUUsV0FBVyxFQUN4QixhQUFhLEVBQUMsT0FBTyxFQUNyQixjQUFjLEVBQUMsT0FBTyxFQUN0QixPQUFPLEVBQUMsV0FBVyxLQUNmLElBQUksYUFFUixlQUFNLENBQUMsRUFBQyxzR0FBc0csR0FBRyxFQUNqSCxlQUFNLENBQUMsRUFBQyxTQUFTLEdBQUcsRUFDcEIsZUFBTSxDQUFDLEVBQUMsVUFBVSxHQUFHLElBQ2pCLENBQ1AsQ0FBQztBQUNKLENBQUMifQ==

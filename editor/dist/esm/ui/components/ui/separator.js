@@ -1,0 +1,8 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import * as React from "react";
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
+import { cn } from "../../lib/utils";
+const Separator = React.forwardRef(({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (_jsx(SeparatorPrimitive.Root, { ref: ref, decorative: decorative, orientation: orientation, className: cn("shrink-0 bg-border", orientation === "horizontal" ? "h-px w-full" : "h-full w-px", className), ...props })));
+Separator.displayName = SeparatorPrimitive.Root.displayName;
+export { Separator };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2VwYXJhdG9yLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vc3JjL3VpL2NvbXBvbmVudHMvdWkvc2VwYXJhdG9yLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsT0FBTyxLQUFLLEtBQUssTUFBTSxPQUFPLENBQUE7QUFDOUIsT0FBTyxLQUFLLGtCQUFrQixNQUFNLDJCQUEyQixDQUFBO0FBRS9ELE9BQU8sRUFBRSxFQUFFLEVBQUUsTUFBTSxpQkFBaUIsQ0FBQTtBQUVwQyxNQUFNLFNBQVMsR0FBRyxLQUFLLENBQUMsVUFBVSxDQUloQyxDQUNFLEVBQUUsU0FBUyxFQUFFLFdBQVcsR0FBRyxZQUFZLEVBQUUsVUFBVSxHQUFHLElBQUksRUFBRSxHQUFHLEtBQUssRUFBRSxFQUN0RSxHQUFHLEVBQ0gsRUFBRSxDQUFDLENBQ0gsS0FBQyxrQkFBa0IsQ0FBQyxJQUFJLElBQ3RCLEdBQUcsRUFBRSxHQUFHLEVBQ1IsVUFBVSxFQUFFLFVBQVUsRUFDdEIsV0FBVyxFQUFFLFdBQVcsRUFDeEIsU0FBUyxFQUFFLEVBQUUsQ0FDWCxvQkFBb0IsRUFDcEIsV0FBVyxLQUFLLFlBQVksQ0FBQyxDQUFDLENBQUMsYUFBYSxDQUFDLENBQUMsQ0FBQyxhQUFhLEVBQzVELFNBQVMsQ0FDVixLQUNHLEtBQUssR0FDVCxDQUNILENBQ0YsQ0FBQTtBQUNELFNBQVMsQ0FBQyxXQUFXLEdBQUcsa0JBQWtCLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQTtBQUUzRCxPQUFPLEVBQUUsU0FBUyxFQUFFLENBQUEifQ==

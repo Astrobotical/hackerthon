@@ -1,0 +1,1 @@
+{"version":3,"file":"slack.flyde.d.ts","sourceRoot":"","sources":["../../src/ThirdParty/slack.flyde.ts"],"names":[],"mappings":"AAAA,OAAO,EAEL,QAAQ,EACT,MAAM,aAAa,CAAC;AAGrB,MAAM,WAAW,kBAAkB;IACjC,KAAK,EAAE,MAAM,CAAC;IACd,OAAO,CAAC,EAAE,MAAM,CAAC;IACjB,iBAAiB,CAAC,EAAE;QAClB,QAAQ,CAAC,EAAE,MAAM,EAAE,CAAC;KACrB,CAAC;CACH;AAED,eAAO,MAAM,KAAK,EAAE,QAiUnB,CAAC"}

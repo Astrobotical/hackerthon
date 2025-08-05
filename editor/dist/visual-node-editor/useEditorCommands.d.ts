@@ -1,0 +1,30 @@
+import { PinType, InputMode, NodeInstance, NodeStyle, Pos, ConnectionData, ConnectionNode, ImportableEditorNode, EditorNodeInstance } from "@flyde/core";
+import React from "react";
+import { Size } from "..";
+export declare function useEditorCommands(lastMousePos: React.MutableRefObject<Pos>, vpSize: Size, isBoardInFocus: React.MutableRefObject<boolean>): {
+    onRenameIoPin: (type: PinType, pinId: string) => Promise<void>;
+    onChangeInputMode: (pinId: string, mode: InputMode) => void;
+    onToggleSticky: (ins: NodeInstance, pinId: string, forceValue?: boolean) => void;
+    onRemoveIoPin: (type: PinType, pinId: string) => void;
+    onDeleteInstances: (ids: string[]) => void;
+    onUnGroup: (groupNodeIns: EditorNodeInstance) => void;
+    onNodeIoSetDescription: (type: PinType, pinId: string, description: string) => void;
+    onChangeInstanceDisplayName: (ins: NodeInstance, name: string) => void;
+    onChangeVisibleInputs: (ins: NodeInstance, inputs: string[]) => void;
+    onChangeVisibleOutputs: (ins: NodeInstance, outputs: string[]) => void;
+    onChangeInstanceStyle: (instance: NodeInstance, style: NodeStyle) => void;
+    deleteSelection: () => Promise<void>;
+    onAddNode: (importableNode: ImportableEditorNode, position?: Pos) => Promise<void>;
+    onSelectInstance: ({ id }: NodeInstance, ev: React.MouseEvent) => void;
+    selectAll: () => void;
+    onDeleteInstance: (ins: NodeInstance) => void;
+    duplicate: () => void;
+    onSelectConnection: (connection: ConnectionData, ev: React.MouseEvent) => void;
+    onZoom: (_newZoom: number, source?: "hotkey" | "mouse") => void;
+    clearSelections: () => void;
+    onConnectionClose: (from: ConnectionNode, to: ConnectionNode, source: string) => void;
+    onGroupSelectedInternal: () => Promise<void>;
+    onNodeIoPinClick: (pinId: string, type: PinType, event?: React.MouseEvent) => void;
+    onPinClick: (ins: NodeInstance, pinId: string, type: PinType) => void;
+};
+//# sourceMappingURL=useEditorCommands.d.ts.map

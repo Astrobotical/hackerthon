@@ -1,0 +1,221 @@
+@import "./base-node-view/style.scss";
+@import "./connection-view/style.scss";
+@import "./instance-view/style.scss";
+@import "./layout-debugger/styles.scss";
+@import "./node-io-view/style.scss";
+@import "../lib/common.scss";
+@import "./pin-view/pin-view.scss";
+@import "./runtime-player/events.scss";
+@import "./HelpBubble/HelpBubble.scss";
+@import "../vars.scss";
+@import "./RunFlowModal/RunFlowModal.scss";
+
+.visual-node-editor {
+  &:not(.dark) {
+    background: $gray-100;
+  }
+
+  &.dark {
+    background: $neutral-700;
+  }
+
+  z-index: 0;
+
+  display: flex;
+
+
+  &>.side-bar {
+    width: 40px;
+    white-space: nowrap;
+
+    &.expanded {
+      width: 250px;
+    }
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  &>main {
+    flex: 1;
+    overflow: hidden;
+    // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2CBCDCF' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &.dark>main {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%20A0A0A' fill-opacity='0.3' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .node-inputs,
+  .node-outputs {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    display: flex;
+    align-content: space-between;
+    position: absolute;
+    justify-content: space-around;
+    z-index: 1;
+
+    &.node-inputs {
+      top: 0;
+    }
+
+    &.node-outputs {
+      bottom: 0;
+    }
+  }
+
+  .selection-box {
+    background: rgba(101, 200, 255, 0.5);
+    border: 1px solid #f7f7f7;
+    opacity: 0.7;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .edit-group-modal {
+    position: fixed;
+    z-index: 3;
+    width: 80vw;
+    height: 90vh;
+    background: rgba(39, 54, 62, 0.95);
+    border: 1px solid #787878;
+    box-sizing: border-box;
+    border-radius: 5px;
+    left: 10vw;
+    top: 5vh;
+    bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+
+    >header {
+      background: #2f2f2f;
+      border-radius: 5px 5px 0 0;
+      flex-grow: 0;
+      flex-shrink: 0;
+      padding: 8px 20px;
+      color: white;
+      font-weight: 300;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+
+      .text-wrapper {
+        flex: 1;
+      }
+    }
+
+    >main {
+      position: relative;
+      flex: 1;
+      overflow: auto;
+      display: flex;
+    }
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  .viewport-controls-and-help {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    // width: 200px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+    user-select: none;
+
+    .bp5-slider {
+      width: 150px;
+      height: 16px;
+    }
+  }
+
+  .temp {
+    position: absolute;
+    bottom: 20px;
+    right: 250px;
+  }
+
+  .inline-node-container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    overflow: hidden;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    // z-index: 999999;
+    border: 1px solid gray;
+
+    >header {
+      background: white;
+      padding: 10px 5px;
+    }
+
+    .visual-node-editor {
+      display: flex;
+      // overflow: hidden;
+      flex: 1;
+
+      >main {
+        box-shadow: none;
+      }
+
+      .zoom-slider {
+        display: none;
+      }
+    }
+  }
+
+  .debug-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    background: rgba(166, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: monospace;
+  }
+
+
+  .onboarding-tips {
+    // Position and other styles now handled by Tailwind classes in the component
+    // Only keep the old tip feedback and text styles for backward compatibility
+
+    &.dark {
+      // Only apply dark mode styles if needed by the Alert component
+    }
+
+    .onboarding-tip-feedback {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .onboarding-tip-text {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-weight: normal;
+    }
+  }
+
+}

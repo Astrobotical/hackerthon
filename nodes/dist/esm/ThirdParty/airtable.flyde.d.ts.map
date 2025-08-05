@@ -1,0 +1,1 @@
+{"version":3,"file":"airtable.flyde.d.ts","sourceRoot":"","sources":["../../../src/ThirdParty/airtable.flyde.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAoB,MAAM,aAAa,CAAC;AAGzD,MAAM,WAAW,qBAAqB;IACpC,KAAK,EAAE;QACL,OAAO,EAAE,MAAM,CAAC;QAChB,IAAI,CAAC,EAAE,MAAM,CAAC;QACd,UAAU,CAAC,EAAE,MAAM,CAAC;KACrB,CAAC;CACH;AAED,eAAO,MAAM,QAAQ,EAAE,QAgMtB,CAAC"}

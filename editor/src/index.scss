@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700");
+
+// Import Tailwind
+@import "../dist/styles/tailwind.scss";
+
+// Import component styles
+@import "./flow-editor/style.scss";
+@import "./visual-node-editor/style.scss";
+@import "./lib/react-utils/react-resizable.scss";

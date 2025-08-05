@@ -1,0 +1,28 @@
+@import "../../lib/common.scss";
+
+.node-io-view {
+  .base-node-view-inner .node-body .icon-container {
+    &.dark {
+      color: white;
+    }
+    &:not(.dark) {
+      color: #333;
+    }
+  }
+
+  .node-header {
+    text-transform: capitalize;
+  }
+
+  .pin-container {
+    position: relative;
+
+    &.input {
+      padding-right: 6px;
+    }
+
+    &.output {
+      padding-left: 6px;
+    }
+  }
+}

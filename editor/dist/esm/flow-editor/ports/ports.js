@@ -1,0 +1,46 @@
+import { createContext, useContext } from "react";
+import { noop, } from "@flyde/core";
+export * from "./analytics";
+;
+const toastNotImplemented = (method) => async () => {
+    console.warn(`${method} Not implemented`);
+    alert(`${method} Not implemented`);
+};
+export const defaultPorts = {
+    prompt: async ({ text, defaultValue }) => prompt(`${text}`, defaultValue),
+    openFile: async (path) => {
+        // toastMsg(`Open ${path}`);
+    },
+    confirm: async ({ text }) => confirm(text),
+    readFlow: toastNotImplemented("readFlow"),
+    setFlow: toastNotImplemented("setFlow"),
+    onExternalFlowChange: toastNotImplemented("onExternalFlowChange"),
+    onRunFlow: toastNotImplemented("onRunFlow"),
+    onStopFlow: toastNotImplemented("onStopFlow"),
+    reportEvent: noop,
+    generateNodeFromPrompt: toastNotImplemented("generateNodeFromPrompt"),
+    getLibraryData: () => Promise.resolve({ groups: [] }),
+    onRequestSiblingNodes: () => Promise.resolve([]),
+    onCreateCustomNode: toastNotImplemented("onCreateCustomNode"),
+    onRequestNodeSource: () => {
+        throw new Error("Not implemented");
+    },
+    resolveInstance: () => {
+        throw new Error("Not implemented");
+    },
+    getAvailableSecrets: () => Promise.resolve([]),
+    addNewSecret: () => Promise.resolve([]),
+};
+export const PortsContext = createContext(defaultPorts);
+export const usePrompt = () => {
+    const dtoPrompt = useContext(PortsContext).prompt;
+    return (text, defaultValue) => dtoPrompt({ text, defaultValue });
+};
+export const useConfirm = () => {
+    const dtoPrompt = useContext(PortsContext).confirm;
+    return (text) => dtoPrompt({ text });
+};
+export const usePorts = () => {
+    return useContext(PortsContext);
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicG9ydHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9zcmMvZmxvdy1lZGl0b3IvcG9ydHMvcG9ydHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLGFBQWEsRUFBRSxVQUFVLEVBQUUsTUFBTSxPQUFPLENBQUM7QUFDbEQsT0FBTyxFQUdMLElBQUksR0FRTCxNQUFNLGFBQWEsQ0FBQztBQUdyQixjQUFjLGFBQWEsQ0FBQztBQUkyRSxDQUFDO0FBK0N4RyxNQUFNLG1CQUFtQixHQUFRLENBQUMsTUFBYyxFQUFFLEVBQUUsQ0FBQyxLQUFLLElBQUksRUFBRTtJQUM5RCxPQUFPLENBQUMsSUFBSSxDQUFDLEdBQUcsTUFBTSxrQkFBa0IsQ0FBQyxDQUFDO0lBQzFDLEtBQUssQ0FBQyxHQUFHLE1BQU0sa0JBQWtCLENBQUMsQ0FBQztBQUNyQyxDQUFDLENBQUM7QUFFRixNQUFNLENBQUMsTUFBTSxZQUFZLEdBQWdCO0lBQ3ZDLE1BQU0sRUFBRSxLQUFLLEVBQUUsRUFBRSxJQUFJLEVBQUUsWUFBWSxFQUFFLEVBQUUsRUFBRSxDQUFDLE1BQU0sQ0FBQyxHQUFHLElBQUksRUFBRSxFQUFFLFlBQVksQ0FBQztJQUN6RSxRQUFRLEVBQUUsS0FBSyxFQUFFLElBQUksRUFBRSxFQUFFO1FBQ3ZCLDRCQUE0QjtJQUM5QixDQUFDO0lBQ0QsT0FBTyxFQUFFLEtBQUssRUFBRSxFQUFFLElBQUksRUFBRSxFQUFFLEVBQUUsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDO0lBQzFDLFFBQVEsRUFBRSxtQkFBbUIsQ0FBQyxVQUFVLENBQUM7SUFDekMsT0FBTyxFQUFFLG1CQUFtQixDQUFDLFNBQVMsQ0FBQztJQUV2QyxvQkFBb0IsRUFBRSxtQkFBbUIsQ0FBQyxzQkFBc0IsQ0FBQztJQUNqRSxTQUFTLEVBQUUsbUJBQW1CLENBQUMsV0FBVyxDQUFDO0lBQzNDLFVBQVUsRUFBRSxtQkFBbUIsQ0FBQyxZQUFZLENBQUM7SUFDN0MsV0FBVyxFQUFFLElBQUk7SUFDakIsc0JBQXNCLEVBQUUsbUJBQW1CLENBQUMsd0JBQXdCLENBQUM7SUFDckUsY0FBYyxFQUFFLEdBQUcsRUFBRSxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsRUFBRSxNQUFNLEVBQUUsRUFBRSxFQUFFLENBQUM7SUFDckQscUJBQXFCLEVBQUUsR0FBRyxFQUFFLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxFQUFFLENBQUM7SUFDaEQsa0JBQWtCLEVBQUUsbUJBQW1CLENBQUMsb0JBQW9CLENBQUM7SUFDN0QsbUJBQW1CLEVBQUUsR0FBRyxFQUFFO1FBQ3hCLE1BQU0sSUFBSSxLQUFLLENBQUMsaUJBQWlCLENBQUMsQ0FBQztJQUNyQyxDQUFDO0lBQ0QsZUFBZSxFQUFFLEdBQUcsRUFBRTtRQUNwQixNQUFNLElBQUksS0FBSyxDQUFDLGlCQUFpQixDQUFDLENBQUM7SUFDckMsQ0FBQztJQUNELG1CQUFtQixFQUFFLEdBQUcsRUFBRSxDQUFDLE9BQU8sQ0FBQyxPQUFPLENBQUMsRUFBRSxDQUFDO0lBQzlDLFlBQVksRUFBRSxHQUFHLEVBQUUsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLEVBQUUsQ0FBQztDQUN4QyxDQUFDO0FBRUYsTUFBTSxDQUFDLE1BQU0sWUFBWSxHQUFHLGFBQWEsQ0FBYyxZQUFZLENBQUMsQ0FBQztBQUVyRSxNQUFNLENBQUMsTUFBTSxTQUFTLEdBQUcsR0FBRyxFQUFFO0lBQzVCLE1BQU0sU0FBUyxHQUFHLFVBQVUsQ0FBQyxZQUFZLENBQUMsQ0FBQyxNQUFNLENBQUM7SUFDbEQsT0FBTyxDQUFDLElBQVksRUFBRSxZQUFxQixFQUEwQixFQUFFLENBQ3JFLFNBQVMsQ0FBQyxFQUFFLElBQUksRUFBRSxZQUFZLEVBQUUsQ0FBQyxDQUFDO0FBQ3RDLENBQUMsQ0FBQztBQUVGLE1BQU0sQ0FBQyxNQUFNLFVBQVUsR0FBRyxHQUFHLEVBQUU7SUFDN0IsTUFBTSxTQUFTLEdBQUcsVUFBVSxDQUFDLFlBQVksQ0FBQyxDQUFDLE9BQU8sQ0FBQztJQUNuRCxPQUFPLENBQUMsSUFBWSxFQUFvQixFQUFFLENBQUMsU0FBUyxDQUFDLEVBQUUsSUFBSSxFQUFFLENBQUMsQ0FBQztBQUNqRSxDQUFDLENBQUM7QUFJRixNQUFNLENBQUMsTUFBTSxRQUFRLEdBQUcsR0FBRyxFQUFFO0lBQzNCLE9BQU8sVUFBVSxDQUFDLFlBQVksQ0FBQyxDQUFDO0FBQ2xDLENBQUMsQ0FBQyJ9

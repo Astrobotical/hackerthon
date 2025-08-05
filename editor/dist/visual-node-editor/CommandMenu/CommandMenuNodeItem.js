@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CustomNodeButton = exports.NodeItem = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const ui_1 = require("../../ui");
+const instance_view_1 = require("../instance-view");
+const NodeItem = ({ node, groupTitle, onSelect }) => {
+    var _a;
+    return ((0, jsx_runtime_1.jsxs)(ui_1.CommandItem, { value: `${groupTitle}:${node.id}`, onSelect: onSelect, className: "text-xs cursor-pointer", children: [(0, jsx_runtime_1.jsx)(instance_view_1.InstanceIcon, { icon: node.icon, className: "mr-0.5" }), (0, jsx_runtime_1.jsx)(ui_1.TooltipProvider, { children: (0, jsx_runtime_1.jsxs)(ui_1.Tooltip, { children: [(0, jsx_runtime_1.jsx)(ui_1.TooltipTrigger, { className: "truncate", children: (_a = node.displayName) !== null && _a !== void 0 ? _a : node.id }), node.description && ((0, jsx_runtime_1.jsx)(ui_1.TooltipContent, { side: "right", className: "max-w-[300px]", children: node.description }))] }) })] }, `${groupTitle}-${node.id}`));
+};
+exports.NodeItem = NodeItem;
+const CustomNodeButton = ({ onSelect }) => ((0, jsx_runtime_1.jsxs)(ui_1.CommandItem, { value: "custom", onSelect: onSelect, className: "text-xs py-1 px-1 cursor-pointer add-menu-item", children: [(0, jsx_runtime_1.jsx)(instance_view_1.InstanceIcon, { icon: "cow", className: "mr-0.5" }), "Custom Node"] }));
+exports.CustomNodeButton = CustomNodeButton;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29tbWFuZE1lbnVOb2RlSXRlbS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy92aXN1YWwtbm9kZS1lZGl0b3IvQ29tbWFuZE1lbnUvQ29tbWFuZE1lbnVOb2RlSXRlbS50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUNBLGlDQU1rQjtBQUVsQixvREFBZ0Q7QUFRekMsTUFBTSxRQUFRLEdBQTRCLENBQUMsRUFBRSxJQUFJLEVBQUUsVUFBVSxFQUFFLFFBQVEsRUFBRSxFQUFFLEVBQUU7O0lBQUMsT0FBQSxDQUNqRix3QkFBQyxnQkFBVyxJQUVSLEtBQUssRUFBRSxHQUFHLFVBQVUsSUFBSSxJQUFJLENBQUMsRUFBRSxFQUFFLEVBQ2pDLFFBQVEsRUFBRSxRQUFRLEVBQ2xCLFNBQVMsRUFBQyx3QkFBd0IsYUFFbEMsdUJBQUMsNEJBQVksSUFBQyxJQUFJLEVBQUUsSUFBSSxDQUFDLElBQUksRUFBRSxTQUFTLEVBQUMsUUFBUSxHQUFHLEVBQ3BELHVCQUFDLG9CQUFlLGNBQ1osd0JBQUMsWUFBTyxlQUNKLHVCQUFDLG1CQUFjLElBQUMsU0FBUyxFQUFDLFVBQVUsWUFDL0IsTUFBQSxJQUFJLENBQUMsV0FBVyxtQ0FBSSxJQUFJLENBQUMsRUFBRSxHQUNmLEVBQ2hCLElBQUksQ0FBQyxXQUFXLElBQUksQ0FDakIsdUJBQUMsbUJBQWMsSUFDWCxJQUFJLEVBQUMsT0FBTyxFQUNaLFNBQVMsRUFBQyxlQUFlLFlBRXhCLElBQUksQ0FBQyxXQUFXLEdBQ0osQ0FDcEIsSUFDSyxHQUNJLEtBcEJiLEdBQUcsVUFBVSxJQUFJLElBQUksQ0FBQyxFQUFFLEVBQUUsQ0FxQnJCLENBQ2pCLENBQUE7Q0FBQSxDQUFDO0FBeEJXLFFBQUEsUUFBUSxZQXdCbkI7QUFFSyxNQUFNLGdCQUFnQixHQUFvRCxDQUFDLEVBQUUsUUFBUSxFQUFFLEVBQUUsRUFBRSxDQUFDLENBQy9GLHdCQUFDLGdCQUFXLElBQ1IsS0FBSyxFQUFDLFFBQVEsRUFDZCxRQUFRLEVBQUUsUUFBUSxFQUNsQixTQUFTLEVBQUMsZ0RBQWdELGFBRTFELHVCQUFDLDRCQUFZLElBQUMsSUFBSSxFQUFDLEtBQUssRUFBQyxTQUFTLEVBQUMsUUFBUSxHQUFHLG1CQUVwQyxDQUNqQixDQUFDO0FBVFcsUUFBQSxnQkFBZ0Isb0JBUzNCIn0=

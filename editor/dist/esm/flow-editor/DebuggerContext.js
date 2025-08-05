@@ -1,0 +1,9 @@
+import { createContext, useContext } from "react";
+const DebuggerContext = createContext({
+    onRequestHistory: () => Promise.reject(new Error("Not implemented")),
+});
+export const DebuggerContextProvider = DebuggerContext.Provider;
+export const useDebuggerContext = () => {
+    return useContext(DebuggerContext);
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRGVidWdnZXJDb250ZXh0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2Zsb3ctZWRpdG9yL0RlYnVnZ2VyQ29udGV4dC50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUEsT0FBTyxFQUFFLGFBQWEsRUFBRSxVQUFVLEVBQUUsTUFBTSxPQUFPLENBQUM7QUFXbEQsTUFBTSxlQUFlLEdBQUcsYUFBYSxDQUFzQjtJQUN6RCxnQkFBZ0IsRUFBRSxHQUFHLEVBQUUsQ0FBQyxPQUFPLENBQUMsTUFBTSxDQUFDLElBQUksS0FBSyxDQUFDLGlCQUFpQixDQUFDLENBQUM7Q0FDckUsQ0FBQyxDQUFDO0FBRUgsTUFBTSxDQUFDLE1BQU0sdUJBQXVCLEdBQUcsZUFBZSxDQUFDLFFBQVEsQ0FBQztBQUVoRSxNQUFNLENBQUMsTUFBTSxrQkFBa0IsR0FBRyxHQUFHLEVBQUU7SUFDckMsT0FBTyxVQUFVLENBQUMsZUFBZSxDQUFDLENBQUM7QUFDckMsQ0FBQyxDQUFDIn0=

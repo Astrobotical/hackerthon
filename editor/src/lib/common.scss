@@ -1,0 +1,133 @@
+@import "react18-json-view/src/style";
+@import "../vars.scss";
+
+$selection-color: #007ec6;
+$selection-text-color: #e9e9e9;
+
+$font-family: "DM Sans", sans-serif;
+
+$shadow-a: 0px 0px 10px 2px rgba(48, 48, 48, 0.15);
+
+$amethyst: #9b5de5ff;
+$magenta-crayola: #f15bb5ff;
+$minion-yellow: #fee440ff;
+$capri: #00bbf9ff;
+$sea-green-crayola: #00f5d4ff;
+
+/* SCSS HEX */
+$uranian-blue: #ade1ffff;
+$pale-pink: #ffd6dbff;
+$pale-purple-puntone: #eddfefff;
+$aero-blue: #c1ebdbff;
+$tea-green: #dff2baff;
+
+$output-color: #ffd5c9;
+
+$black: #000000;
+$white: #ffffff;
+
+$selected-light: #9bd0ff;
+$selected-dark: darken($selected-light, 10%);
+
+@mixin base-node($bg-color: white) {
+  font-family: $font-family;
+  border: 2px solid;
+  border-radius: 8px;
+  user-select: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 30px 10px;
+  line-height: 1;
+  transition: background-color ease-in-out 0.1s, box-shadow ease-in-out 0.2s;
+  will-change: background-color, box-shadow;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  // -webkit-line-clamp: 3;
+  // overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1; // added so that it is above pin view when it is retracted when minimized
+
+  &:not(.dark) {
+    svg {
+      color: $tblue-700;
+    }
+  }
+
+  &.dark {
+    svg {
+      color: $tblue-500;
+    }
+  }
+
+  &:not(.dark) {
+    color: #000000;
+    background: $white;
+    border-color: $gray-300;
+
+    &.closest:not(.selected) {
+      border-color: $gray-400;
+    }
+
+    &:hover:not(.selected) {
+      border-color: $gray-600;
+    }
+
+    &.selected {
+      border-color: $gray-800;
+      border-style: solid;
+      background: $selected-light;
+      // color: $selection-text-color;
+
+      transition: background-color ease-in-out 0.05s;
+    }
+  }
+
+  &.dark {
+    color: $neutral-50;
+    background: $neutral-800;
+    border-color: $neutral-500;
+
+    &.closest:not(.selected) {
+      border-color: $neutral-400;
+    }
+
+    &:hover:not(.selected) {
+      border-color: $neutral-300;
+    }
+
+    &.selected {
+      border-color: $selected-dark;
+      border-style: solid;
+      background: $selected-dark;
+      // color: $selection-text-color;
+
+      transition: background-color ease-in-out 0.05s;
+    }
+  }
+
+  &.dragged {
+    opacity: 0.8;
+  }
+}
+
+@mixin custom-node-color($bg, $fg: inherit) {
+  &:not(.selected) {
+    background: $bg;
+    color: $fg;
+  }
+}
+
+@at-root {
+  .info-tooltip-icon {
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,21 @@
+@import "./DataInspectionModal/DataInspectionModal.scss";
+
+.flyde-flow-editor {
+  display: flex;
+  flex: 1;
+  position: relative;
+  flex-direction: column;
+  // background-color: white;
+  // color: #000;
+
+  overflow: hidden;
+
+  > .visual-node-editor {
+    height: 100%;
+    flex: 1;
+  }
+
+  > .breadcrumbs {
+    flex-shrink: 0;
+  }
+}

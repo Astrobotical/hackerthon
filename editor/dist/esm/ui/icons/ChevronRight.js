@@ -1,0 +1,7 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import { defaultProps } from "./types";
+export function ChevronRight(props) {
+    const { size, strokeWidth, ...rest } = { ...defaultProps, ...props };
+    return (_jsx("svg", { width: size, height: size, fill: "none", stroke: "currentColor", strokeWidth: strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24", ...rest, children: _jsx("polyline", { points: "9 18 15 12 9 6" }) }));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2hldnJvblJpZ2h0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vc3JjL3VpL2ljb25zL0NoZXZyb25SaWdodC50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLE9BQU8sRUFBYSxZQUFZLEVBQUUsTUFBTSxTQUFTLENBQUM7QUFFbEQsTUFBTSxVQUFVLFlBQVksQ0FBQyxLQUFnQjtJQUMzQyxNQUFNLEVBQUUsSUFBSSxFQUFFLFdBQVcsRUFBRSxHQUFHLElBQUksRUFBRSxHQUFHLEVBQUUsR0FBRyxZQUFZLEVBQUUsR0FBRyxLQUFLLEVBQUUsQ0FBQztJQUNyRSxPQUFPLENBQ0wsY0FDRSxLQUFLLEVBQUUsSUFBSSxFQUNYLE1BQU0sRUFBRSxJQUFJLEVBQ1osSUFBSSxFQUFDLE1BQU0sRUFDWCxNQUFNLEVBQUMsY0FBYyxFQUNyQixXQUFXLEVBQUUsV0FBVyxFQUN4QixhQUFhLEVBQUMsT0FBTyxFQUNyQixjQUFjLEVBQUMsT0FBTyxFQUN0QixPQUFPLEVBQUMsV0FBVyxLQUNmLElBQUksWUFFUixtQkFBVSxNQUFNLEVBQUMsZ0JBQWdCLEdBQUcsR0FDaEMsQ0FDUCxDQUFDO0FBQ0osQ0FBQyJ9

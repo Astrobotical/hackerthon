@@ -1,0 +1,1 @@
+{"version":3,"file":"notion.flyde.d.ts","sourceRoot":"","sources":["../../src/ThirdParty/notion.flyde.ts"],"names":[],"mappings":"AAAA,OAAO,EAEL,QAAQ,EACT,MAAM,aAAa,CAAC;AAGrB,MAAM,WAAW,mBAAmB;IAClC,KAAK,EAAE;QACL,OAAO,EAAE,MAAM,CAAC;QAChB,IAAI,CAAC,EAAE,MAAM,CAAC;QACd,MAAM,CAAC,EAAE,MAAM,CAAC;KACjB,CAAC;CACH;AAED,eAAO,MAAM,MAAM,EAAE,QAqNpB,CAAC"}

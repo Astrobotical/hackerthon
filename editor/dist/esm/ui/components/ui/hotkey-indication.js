@@ -1,0 +1,41 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { cn } from "../../lib/utils";
+import { useEffect, useState } from "react";
+const KEY_SYMBOLS_MAC = {
+    command: "⌘",
+    cmd: "⌘",
+    ctrl: "Ctrl",
+    shift: "⇧",
+    alt: "⌥",
+    enter: "↵",
+    backspace: "⌫",
+    delete: "⌦",
+    escape: "Esc",
+    tab: "⇥",
+    up: "↑",
+    down: "↓",
+    left: "←",
+    right: "→",
+};
+const KEY_SYMBOLS_OTHER = {
+    ...KEY_SYMBOLS_MAC,
+    command: "Ctrl",
+    cmd: "Ctrl",
+    alt: "Alt",
+};
+export const HotkeyIndication = ({ className, hotkey, label, size = "md", }) => {
+    const [keySymbols, setKeySymbols] = useState(KEY_SYMBOLS_OTHER);
+    useEffect(() => {
+        if (navigator.platform.toLowerCase().includes("mac")) {
+            setKeySymbols(KEY_SYMBOLS_MAC);
+        }
+    }, []);
+    const formattedHotkey = hotkey
+        .toLowerCase()
+        .split("+")
+        .map((key) => keySymbols[key] || key.toUpperCase())
+        .join(" ");
+    const textSize = size === "sm" ? "10px" : size === "md" ? "12px" : "14px";
+    return (_jsxs("div", { className: cn("text-neutral-600 dark:text-neutral-600 flex items-center gap-1", className), children: [_jsx("span", { className: `text-[${textSize}] leading-none`, children: formattedHotkey }), label && (_jsxs("span", { className: `text-[${textSize}] leading-none`, children: ["- ", label] }))] }));
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaG90a2V5LWluZGljYXRpb24uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9zcmMvdWkvY29tcG9uZW50cy91aS9ob3RrZXktaW5kaWNhdGlvbi50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLE9BQU8sRUFBRSxFQUFFLEVBQUUsTUFBTSxpQkFBaUIsQ0FBQztBQUNyQyxPQUFPLEVBQUUsU0FBUyxFQUFFLFFBQVEsRUFBRSxNQUFNLE9BQU8sQ0FBQztBQUU1QyxNQUFNLGVBQWUsR0FBMkI7SUFDOUMsT0FBTyxFQUFFLEdBQUc7SUFDWixHQUFHLEVBQUUsR0FBRztJQUNSLElBQUksRUFBRSxNQUFNO0lBQ1osS0FBSyxFQUFFLEdBQUc7SUFDVixHQUFHLEVBQUUsR0FBRztJQUNSLEtBQUssRUFBRSxHQUFHO0lBQ1YsU0FBUyxFQUFFLEdBQUc7SUFDZCxNQUFNLEVBQUUsR0FBRztJQUNYLE1BQU0sRUFBRSxLQUFLO0lBQ2IsR0FBRyxFQUFFLEdBQUc7SUFDUixFQUFFLEVBQUUsR0FBRztJQUNQLElBQUksRUFBRSxHQUFHO0lBQ1QsSUFBSSxFQUFFLEdBQUc7SUFDVCxLQUFLLEVBQUUsR0FBRztDQUNYLENBQUM7QUFFRixNQUFNLGlCQUFpQixHQUFHO0lBQ3hCLEdBQUcsZUFBZTtJQUNsQixPQUFPLEVBQUUsTUFBTTtJQUNmLEdBQUcsRUFBRSxNQUFNO0lBQ1gsR0FBRyxFQUFFLEtBQUs7Q0FDWCxDQUFDO0FBU0YsTUFBTSxDQUFDLE1BQU0sZ0JBQWdCLEdBQUcsQ0FBQyxFQUMvQixTQUFTLEVBQ1QsTUFBTSxFQUNOLEtBQUssRUFDTCxJQUFJLEdBQUcsSUFBSSxHQUNXLEVBQUUsRUFBRTtJQUMxQixNQUFNLENBQUMsVUFBVSxFQUFFLGFBQWEsQ0FBQyxHQUFHLFFBQVEsQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDO0lBRWhFLFNBQVMsQ0FBQyxHQUFHLEVBQUU7UUFDYixJQUFJLFNBQVMsQ0FBQyxRQUFRLENBQUMsV0FBVyxFQUFFLENBQUMsUUFBUSxDQUFDLEtBQUssQ0FBQyxFQUFFLENBQUM7WUFDckQsYUFBYSxDQUFDLGVBQXNCLENBQUMsQ0FBQztRQUN4QyxDQUFDO0lBQ0gsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxDQUFDO0lBRVAsTUFBTSxlQUFlLEdBQUcsTUFBTTtTQUMzQixXQUFXLEVBQUU7U0FDYixLQUFLLENBQUMsR0FBRyxDQUFDO1NBQ1YsR0FBRyxDQUNGLENBQUMsR0FBRyxFQUFFLEVBQUUsQ0FBQyxVQUFVLENBQUMsR0FBOEIsQ0FBQyxJQUFJLEdBQUcsQ0FBQyxXQUFXLEVBQUUsQ0FDekU7U0FDQSxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUM7SUFFYixNQUFNLFFBQVEsR0FBRyxJQUFJLEtBQUssSUFBSSxDQUFDLENBQUMsQ0FBQyxNQUFNLENBQUMsQ0FBQyxDQUFDLElBQUksS0FBSyxJQUFJLENBQUMsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUMsTUFBTSxDQUFDO0lBRTFFLE9BQU8sQ0FDTCxlQUNFLFNBQVMsRUFBRSxFQUFFLENBQ1gsZ0VBQWdFLEVBQ2hFLFNBQVMsQ0FDVixhQUVELGVBQU0sU0FBUyxFQUFFLFNBQVMsUUFBUSxnQkFBZ0IsWUFDL0MsZUFBZSxHQUNYLEVBQ04sS0FBSyxJQUFJLENBQ1IsZ0JBQU0sU0FBUyxFQUFFLFNBQVMsUUFBUSxnQkFBZ0IsbUJBQUssS0FBSyxJQUFRLENBQ3JFLElBQ0csQ0FDUCxDQUFDO0FBQ0osQ0FBQyxDQUFDIn0=

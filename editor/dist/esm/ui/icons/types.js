@@ -1,0 +1,5 @@
+export const defaultProps = {
+    size: 24,
+    strokeWidth: 2,
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9zcmMvdWkvaWNvbnMvdHlwZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0EsTUFBTSxDQUFDLE1BQU0sWUFBWSxHQUFHO0lBQzFCLElBQUksRUFBRSxFQUFFO0lBQ1IsV0FBVyxFQUFFLENBQUM7Q0FDZixDQUFDIn0=

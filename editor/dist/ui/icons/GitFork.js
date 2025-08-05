@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GitFork = GitFork;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const types_1 = require("./types");
+function GitFork(props) {
+    const { size, strokeWidth, ...rest } = { ...types_1.defaultProps, ...props };
+    return ((0, jsx_runtime_1.jsxs)("svg", { width: size, height: size, fill: "none", stroke: "currentColor", strokeWidth: strokeWidth, strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24", ...rest, children: [(0, jsx_runtime_1.jsx)("circle", { cx: "12", cy: "18", r: "3" }), (0, jsx_runtime_1.jsx)("circle", { cx: "6", cy: "6", r: "3" }), (0, jsx_runtime_1.jsx)("circle", { cx: "18", cy: "6", r: "3" }), (0, jsx_runtime_1.jsx)("path", { d: "M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9" }), (0, jsx_runtime_1.jsx)("path", { d: "M12 12v3" })] }));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2l0Rm9yay5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy91aS9pY29ucy9HaXRGb3JrLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUdBLDBCQXFCQzs7QUF2QkQsbUNBQWtEO0FBRWxELFNBQWdCLE9BQU8sQ0FBQyxLQUFnQjtJQUN0QyxNQUFNLEVBQUUsSUFBSSxFQUFFLFdBQVcsRUFBRSxHQUFHLElBQUksRUFBRSxHQUFHLEVBQUUsR0FBRyxvQkFBWSxFQUFFLEdBQUcsS0FBSyxFQUFFLENBQUM7SUFDckUsT0FBTyxDQUNMLGlDQUNFLEtBQUssRUFBRSxJQUFJLEVBQ1gsTUFBTSxFQUFFLElBQUksRUFDWixJQUFJLEVBQUMsTUFBTSxFQUNYLE1BQU0sRUFBQyxjQUFjLEVBQ3JCLFdBQVcsRUFBRSxXQUFXLEVBQ3hCLGFBQWEsRUFBQyxPQUFPLEVBQ3JCLGNBQWMsRUFBQyxPQUFPLEVBQ3RCLE9BQU8sRUFBQyxXQUFXLEtBQ2YsSUFBSSxhQUVSLG1DQUFRLEVBQUUsRUFBQyxJQUFJLEVBQUMsRUFBRSxFQUFDLElBQUksRUFBQyxDQUFDLEVBQUMsR0FBRyxHQUFHLEVBQ2hDLG1DQUFRLEVBQUUsRUFBQyxHQUFHLEVBQUMsRUFBRSxFQUFDLEdBQUcsRUFBQyxDQUFDLEVBQUMsR0FBRyxHQUFHLEVBQzlCLG1DQUFRLEVBQUUsRUFBQyxJQUFJLEVBQUMsRUFBRSxFQUFDLEdBQUcsRUFBQyxDQUFDLEVBQUMsR0FBRyxHQUFHLEVBQy9CLGlDQUFNLENBQUMsRUFBQyx5Q0FBeUMsR0FBRyxFQUNwRCxpQ0FBTSxDQUFDLEVBQUMsVUFBVSxHQUFHLElBQ2pCLENBQ1AsQ0FBQztBQUNKLENBQUMifQ==

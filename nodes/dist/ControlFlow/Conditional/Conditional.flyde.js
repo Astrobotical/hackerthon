@@ -1,0 +1,112 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Conditional = void 0;
+const core_1 = require("@flyde/core");
+const core_2 = require("@flyde/core");
+var ConditionType;
+(function (ConditionType) {
+    ConditionType["Equal"] = "EQUAL";
+    ConditionType["NotEqual"] = "NOT_EQUAL";
+    ConditionType["Contains"] = "CONTAINS";
+    ConditionType["NotContains"] = "NOT_CONTAINS";
+    ConditionType["RegexMatches"] = "REGEX_MATCHES";
+    ConditionType["Exists"] = "EXISTS";
+    ConditionType["NotExists"] = "NOT_EXISTS";
+})(ConditionType || (ConditionType = {}));
+function conditionalConfigToDisplayName(config) {
+    const { type } = config.condition;
+    const rightOperand = JSON.stringify(config.rightOperand.value);
+    switch (type) {
+        case ConditionType.Equal:
+            return `Equals ${rightOperand}`;
+        case ConditionType.NotEqual:
+            return `Does not equal ${rightOperand}`;
+        case ConditionType.Contains:
+            return `Contains ${rightOperand}`;
+        case ConditionType.NotContains:
+            return `Does not contain ${rightOperand}`;
+        case ConditionType.RegexMatches:
+            return `Matches regex ${rightOperand}`;
+        case ConditionType.Exists:
+            return `Exists`;
+        case ConditionType.NotExists:
+            return `Does not exist`;
+    }
+}
+exports.Conditional = {
+    id: "Conditional",
+    namespace: "Control Flow",
+    mode: "advanced",
+    menuDisplayName: "Conditional",
+    defaultConfig: {
+        condition: {
+            type: ConditionType.Equal,
+        },
+        leftOperand: (0, core_1.configurableValue)("string", "{{value}}"),
+        rightOperand: (0, core_1.configurableValue)("string", "Some value"),
+    },
+    menuDescription: "Evaluates the condition, and if it's true, emits the left operand value to the 'true' output, otherwise emits the left operand value to the 'false' output",
+    displayName: (config) => conditionalConfigToDisplayName(config),
+    description: (config) => `Evaluates if ${JSON.stringify(config.leftOperand.value)} ${conditionalConfigToDisplayName(config)}`,
+    icon: "circle-question",
+    inputs: (config) => ({
+        ...(0, core_2.extractInputsFromValue)(config.leftOperand, "leftOperand"),
+        ...(0, core_2.extractInputsFromValue)(config.rightOperand, "rightOperand"),
+    }),
+    outputs: {
+        true: {
+            description: "Emits the left operand value if the condition is true",
+        },
+        false: {
+            description: "Emits the left operand value if the condition is false",
+        },
+    },
+    run: (inputs, outputs, adv) => {
+        const { condition, leftOperand, rightOperand } = adv.context.config;
+        const { true: trueOutput, false: falseOutput } = outputs;
+        const leftSide = (0, core_2.replaceInputsInValue)(inputs, leftOperand, "leftOperand", false);
+        const rightSide = (0, core_2.replaceInputsInValue)(inputs, rightOperand, "rightOperand", false);
+        const result = calculateCondition(leftSide, rightSide, condition);
+        const outputToUse = result ? trueOutput : falseOutput;
+        outputToUse.next(leftSide);
+    },
+    editorConfig: {
+        type: "custom",
+        editorComponentBundlePath: "../../../dist/ui/Conditional.js",
+    },
+};
+function calculateCondition(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+val1, 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+val2, condition) {
+    switch (condition.type) {
+        case ConditionType.Equal:
+            return val1 === val2;
+        case ConditionType.NotEqual:
+            return val1 !== val2;
+        case ConditionType.Contains:
+            if (Array.isArray(val1)) {
+                return val1.includes(val2);
+            }
+            else if (typeof val1 === "string") {
+                return val1.includes(val2);
+            }
+            return false;
+        case ConditionType.NotContains:
+            if (Array.isArray(val1)) {
+                return !val1.includes(val2);
+            }
+            else if (typeof val1 === "string") {
+                return !val1.includes(val2);
+            }
+            return true;
+        case ConditionType.RegexMatches: {
+            return typeof val1 === "string" && new RegExp(val2).test(val1);
+        }
+        case ConditionType.Exists:
+            return val1 !== null && val1 !== undefined && val1 !== "";
+        case ConditionType.NotExists:
+            return val1 === null || val1 === undefined || val1 === "";
+    }
+}

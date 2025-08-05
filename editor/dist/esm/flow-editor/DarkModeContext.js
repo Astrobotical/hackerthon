@@ -1,0 +1,7 @@
+import { createContext, useContext } from "react";
+const DarkModeContext = createContext(true);
+export const DarkModeProvider = DarkModeContext.Provider;
+export const useDarkMode = () => {
+    return useContext(DarkModeContext);
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRGFya01vZGVDb250ZXh0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2Zsb3ctZWRpdG9yL0RhcmtNb2RlQ29udGV4dC50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLGFBQWEsRUFBRSxVQUFVLEVBQUUsTUFBTSxPQUFPLENBQUM7QUFFbEQsTUFBTSxlQUFlLEdBQUcsYUFBYSxDQUFVLElBQUksQ0FBQyxDQUFDO0FBRXJELE1BQU0sQ0FBQyxNQUFNLGdCQUFnQixHQUFHLGVBQWUsQ0FBQyxRQUFRLENBQUM7QUFFekQsTUFBTSxDQUFDLE1BQU0sV0FBVyxHQUFHLEdBQUcsRUFBRTtJQUM5QixPQUFPLFVBQVUsQ0FBQyxlQUFlLENBQUMsQ0FBQztBQUNyQyxDQUFDLENBQUMifQ==
