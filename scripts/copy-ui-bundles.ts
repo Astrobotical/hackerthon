@@ -3,7 +3,7 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
 import { join, extname } from 'path';
 
-const NODE_UI_DIR = '../nodes/dist/ui';
+const NODE_UI_DIR = './nodes/dist/ui';
 const WEBSITE_PUBLIC_UI_DIR = './public/ui';
 
 function copyUIBundles() {
