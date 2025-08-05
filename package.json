@@ -17,7 +17,7 @@
     "bundle-types": "npm run bundle-types:core && npm run bundle-types:loader",
     "copy-types": "mkdir -p public/types && cp types/*.d.ts public/types/ 2>/dev/null || true",
     "build:next": "next build",
-    "build": "npm run build:main-examples && npm run build:playground-examples && npm run bundle-node-sources && npm run generate-ui-bundles && npm run copy-ui-bundles && npm run bundle-types && npm run copy-types && npm run build:next",
+    "build": "npm run build:main-examples && npm run build:playground-examples && npm run bundle-node-sources && npm run generate-ui-bundles && npm run bundle-types && npm run copy-types && npm run build:next",
     "start": "next start",
     "lint": "next lint",
     "test": ":",
