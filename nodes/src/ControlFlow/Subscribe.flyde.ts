@@ -20,7 +20,7 @@ export const Subscribe: InternalCodeNode = {
   run: function (inputs, outputs, adv) {
     const { value } = outputs;
     const nsKey = `${adv.ancestorsInsIds}__${inputs.key}`;
-    const token = PubSub.subscribe(nsKey, (_, data:any) => {
+    const token = PubSub.subscribe(nsKey, (_:any, data:any) => {
       value.next(data);
     });
 
