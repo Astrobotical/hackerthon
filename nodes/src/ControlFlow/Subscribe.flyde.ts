@@ -1,6 +1,5 @@
 import { InternalCodeNode } from "@flyde/core";
 /* eslint-disable */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const PubSub = require("pubsub-js");
 
 const namespace = "Control Flow";

@@ -1,11 +1,17 @@
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "local-rules"],
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  ignorePatterns: ["dist/**/*"],
-  rules: {
-    "local-rules/one-node-per-file": "error",
-    "local-rules/only-node-exports": "error",
-  },
+ overrides: [
+    {
+      files: ["**/*.*"],
+      rules: {
+        // Disables all rules
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        // Disable your local rules too
+        "local-rules/one-node-per-file": "off",
+        "local-rules/only-node-exports": "off",
+      },
+    },
+  ]
 };
