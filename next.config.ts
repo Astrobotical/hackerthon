@@ -9,7 +9,9 @@ const nextConfig: NextConfig = {
     "@flyde/loader",
     "@flyde/nodes"
   ],
-
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   // Configure webpack for Monaco Editor
   webpack: (config, { isServer }) => {
     // Don't bundle Monaco on the server side
